@@ -1,14 +1,25 @@
 def collect_information():
-    # Ask the user for their personal information
-    full_name = input("Enter your full name: ")
-    age = int(input("Enter your age: "))
-    birthday = int(input("Enter your birthday (MM-DD-YYYY): "))
-    year_level = input("Enter your year level (in words): ")
-    program = input("Enter your program: ")
-    section = int(input("Enter your section: "))
+    while True: 
+      
+            # Ask the user for their personal information
+            full_name = input("Enter your full name: ")
+            age = int(input("Enter your age: "))
+            birthday = int(input("Enter your birthday (MM-DD-YYYY): "))
+            year_level = input("Enter your year level (in words): ")
+            program = input("Enter your program: ")
+            section = int(input("Enter your section: "))
 
-    parts = birthday.split('-')
-    if len(birthday) != 3:
-        print ("Error: Follow the date format (MM-DD-YYYY)")
-        return None
-    
+            # Validation for the birthday using split and length check
+            parts = birthday.split('-')
+            if len(birthday) != 3:
+                print ("Error: Follow the date format (MM-DD-YYYY)")
+                continue    # Ask for the user to input again
+            
+            year, month,day = parts 
+            if len(year) != 4 or not year.isdigit() or not month.isdigit() or not day.isdigit():
+                print("Error: Follow the date format (MM-DD-YYYY)")
+                continue    # Ask for the user to input again
+
+            # Return the gathered information as a formatted string
+            return f"Full Name: {full_name}\nAge: {age}\nBirthday: {birthday}\nYear Level: {year_level}\nProgram: {program}\nSection: {section}"
+        
