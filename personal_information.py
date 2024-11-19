@@ -15,11 +15,4 @@ def collect_information():
                 print ("Error: Follow the date format (MM-DD-YYYY)")
                 continue    # Ask for the user to input again
             
-            year, month,day = parts 
-            if len(year) != 4 or not year.isdigit() or not month.isdigit() or not day.isdigit():
-                print("Error: Follow the date format (MM-DD-YYYY)")
-                continue    # Ask for the user to input again
-
-            # Return the gathered information as a formatted string
-            return f"Full Name: {full_name}\nAge: {age}\nBirthday: {birthday}\nYear Level: {year_level}\nProgram: {program}\nSection: {section}"
-        
+            
