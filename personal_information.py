@@ -34,3 +34,12 @@ def main():
 
         if user_info is None: 
             continue    # Skip writing the file if there was an error in collecting information
+
+        try:
+            with open("personal_information.txt", "a") as file:
+                file.write(user_info)
+            print("Information saved successfully.")
+        
+        except IOError as e:
+            print(f"Error: Failed to add the file: {e}")
+            
