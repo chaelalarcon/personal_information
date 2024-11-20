@@ -29,22 +29,29 @@ def collect_information():
 
 def main():
     while True:
-        # Collect the information from the user
-        user_info = collect_information()
-
-        if user_info is None: 
-            continue    # Skip writing the file if there was an error in collecting information
-
         try:
-            with open("personal_information.txt", "a") as file:
-                file.write(user_info)
-            print("Information saved successfully.")
-        
-        except IOError as e:
-            print(f"Error: Failed to add the file: {e}")
+            # Collect the information from the user
+            user_info = collect_information()
 
-        # Ask the user if they want to continue or exit 
-        continue_input = input("Would you like to input another person? (yes/no): ").strip().lower()
-        if continue_input == 'no':
-            print("Exiting the program...")
+            if user_info is None: 
+                continue    # Skip writing the file if there was an error in collecting information
+
+            try:
+                with open("personal_information.txt", "a") as file:
+                    file.write(user_info)
+                print("Information saved successfully.")
+            
+            except IOError as e:
+                print(f"Error: Failed to add the file: {e}")
+
+            # Ask the user if they want to continue or exit 
+            continue_input = input("Would you like to input another person? (yes/no): ").strip().lower()
+            if continue_input == 'no':
+                print("Exiting the program...")
+                break
+
+        except Exception as e:
+            print(f"An unexpected error occured: {e}")
             break
+
+        
