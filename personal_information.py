@@ -42,4 +42,9 @@ def main():
         
         except IOError as e:
             print(f"Error: Failed to add the file: {e}")
-            
+
+        # Ask the user if they want to continue or exit 
+        continue_input = input("Would you like to input another person? (yes/no): ").strip().lower()
+        if continue_input == 'no':
+            print("Exiting the program...")
+            break
