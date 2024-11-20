@@ -3,6 +3,12 @@ def collect_information():
         try: 
             # Ask the user for their personal information
             full_name = input("Enter your full name: ")
+
+            # Ensure the full name doesn't contain numbers
+            if any(char.isdigit() for char in full_name):
+                print("Error: Full name should not contain numbers. Please enter a valid name.")
+                continue  # Ask for the user to input again
+            
             age = int(input("Enter your age: "))
             birthday = int(input("Enter your birthday (MM-DD-YYYY): "))
             year_level = input("Enter your year level (in words): ")
