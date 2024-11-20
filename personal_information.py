@@ -54,4 +54,5 @@ def main():
             print(f"An unexpected error occured: {e}")
             break
 
-        
+if __name__ == "__main__":
+    main()
