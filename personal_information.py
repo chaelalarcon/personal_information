@@ -8,23 +8,47 @@ def collect_information():
             if any(char.isdigit() for char in full_name):
                 print("Error: Full name should not contain numbers. Please enter a valid name.")
                 continue  # Ask for the user to input again
-            
-            age = int(input("Enter your age: "))
-            birthday = int(input("Enter your birthday (MM-DD-YYYY): "))
-            year_level = input("Enter your year level (in words): ")
-            program = input("Enter your program: ")
-            section = int(input("Enter your section: "))
 
-            # Validation for the birthday using split and length check
+            age = int(input("Enter your age: "))
+
+            if age <= 0:
+                print("Error: Age must be a positive number greater than 0. Please enter a valid age.")
+                continue  # Ask for the user to input again
+
+            # Validation for the birthday
+            birthday = int(input("Enter your birthday (MM-DD-YYYY): "))
+
+            # Split the birthday input by '-' to separate the month, day, and year
             parts = birthday.split('-')
-            if len(birthday) != 3:
-                print ("Error: Follow the date format (MM-DD-YYYY)")
-                continue    # Ask for the user to input again
+            if len(parts) != 3:
+                print("Error: Follow the date format (MM-DD-YYYY).")
+                continue  # Ask for the user to input again
             
-            year, month,day = parts 
+            month, day, year = parts
             if len(year) != 4 or not year.isdigit() or not month.isdigit() or not day.isdigit():
-                print("Error: Follow the date format (MM-DD-YYYY)")
-                continue    # Ask for the user to input again
+                print("Error: Date format invalid. Please follow the MM-DD-YYYY format with numeric values.")
+                continue  # Ask for the user to input again
+
+            # Get the year level and ensure it contains no numbers
+            year_level = input("Enter your year level (in words): ")
+
+            if any(char.isdigit() for char in year_level):  # Check if there are any digits
+                print("Error: Year level should not contain numbers. Please enter a valid year level (e.g., Freshman).")
+                continue  # Ask for the user to input again
+
+            # Get the program and ensure it contains no numbers
+            program = input("Enter your program: ")
+
+            if any(char.isdigit() for char in program):  # Check if there are any digits
+                print("Error: Program should not contain numbers. Please enter a valid program name.")
+                continue  # Ask for the user to input again
+
+            # Get the section number and validate it is positive
+            section = int(input("Enter your section: "))
+            
+            if section <= 0:
+                print("Error: Section must be a positive number. Please enter a valid section.")
+                continue  # Ask for the user to input again
 
             # Return the gathered information as a formatted string: 
             return f"Full Name: {full_name}\nAge: {age}\nBirthday: {birthday}\nYear Level: {year_level}\nProgram: {program}\nSection: {section}"
