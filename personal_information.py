@@ -26,3 +26,11 @@ def collect_information():
         except Exception as e:
             print(f"An error occured while gathering the information: {e} ")
             continue
+
+def main():
+    while True:
+        # Collect the information from the user
+        user_info = collect_information()
+
+        if user_info is None: 
+            continue    # Skip writing the file if there was an error in collecting information
