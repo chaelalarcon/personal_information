@@ -16,18 +16,35 @@ def collect_information():
                 continue  # Ask for the user to input again
 
             # Validation for the birthday
-            birthday = int(input("Enter your birthday (MM-DD-YYYY): "))
+            birthday = input("Enter your birthday (MM-DD-YYYY): ")
 
             # Split the birthday input by '-' to separate the month, day, and year
             parts = birthday.split('-')
             if len(parts) != 3:
                 print("Error: Follow the date format (MM-DD-YYYY).")
                 continue  # Ask for the user to input again
-            
+
             month, day, year = parts
-            if len(year) != 4 or not year.isdigit() or not month.isdigit() or not day.isdigit():
-                print("Error: Date format invalid. Please follow the MM-DD-YYYY format with numeric values.")
+
+            # Check if the month, day, and year are valid integers
+            if not (month.isdigit() and day.isdigit() and year.isdigit()):
+                print("Error: Month, day, and year must be numeric.")
                 continue  # Ask for the user to input again
+
+            # Check that month is between 01 and 12
+            if not (1 <= int(month) <= 12):
+                print("Error: Month must be between 01 and 12.")
+                continue
+
+            # Check that day is within valid range for the month (basic validation, not considering leap years)
+            if not (1 <= int(day) <= 31):
+                print("Error: Day must be between 01 and 31.")
+                continue
+
+            # Check that year is a 4-digit number
+            if len(year) != 4:
+                print("Error: Year must be a 4-digit number.")
+                continue
 
             # Get the year level and ensure it contains no numbers
             year_level = input("Enter your year level (in words): ")
@@ -54,7 +71,7 @@ def collect_information():
             return f"Full Name: {full_name}\nAge: {age}\nBirthday: {birthday}\nYear Level: {year_level}\nProgram: {program}\nSection: {section}"
         
         except Exception as e:
-            print(f"An error occured while gathering the information: {e} ")
+            print(f"An error occurred while gathering the information: {e}")
             continue
 
 def main():
@@ -68,7 +85,7 @@ def main():
 
             try:
                 with open("personal_information.txt", "a") as file:
-                    file.write(user_info)
+                    file.write(user_info + "\n")
                 print("Information saved successfully.")
             
             except IOError as e:
@@ -81,7 +98,7 @@ def main():
                 break
 
         except Exception as e:
-            print(f"An unexpected error occured: {e}")
+            print(f"An unexpected error occurred: {e}")
             break
 
 if __name__ == "__main__":
