@@ -14,7 +14,7 @@ def search_and_display_information():
 
             for i in range(len(lines)):
                     # Check if the current line starts with the full name
-                    if lines[i].startswith(f"Full Name: {search_name}"):
+                    if lines[i].startswith(f"Full Name: {find_name}"):
                         found = True
                         print("\nInformation found:")
                         # Print the information for the found full name
@@ -26,8 +26,19 @@ def search_and_display_information():
                         if i + 4 < len(lines): print(lines[i + 4].strip())  # Program
                         if i + 5 < len(lines): print(lines[i + 5].strip())  # Section
                         break  # Stop once the information is found
+            
+            if not found:
+                    print(f"No information found for {find_name}. Please try again.")
 
-        except:
+            # Ask if the user wants to search for another name
+            continue_search = input("\nWould you like to search for another person? (yes/no): ").strip().lower()
+            if continue_search == "no":
+                print("Exiting the search program...")
+                break
+
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            break
 
 def main():
     search_and_display_information()

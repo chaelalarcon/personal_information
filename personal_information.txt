@@ -1,0 +1,18 @@
+Full Name: Hayami Mizuno
+Age: 18
+Birthday: 02-24-2006
+Year Level: first year
+Program: Interior Design
+Section: 1
+Full Name: Yathara Yves
+Age: 19
+Birthday: 07-05-2006
+Year Level: second year
+Program: Graphic Design
+Section: 1
+Full Name: Chell Dior
+Age: 20
+Birthday: 12-11-2004
+Year Level: third year
+Program: Architecture
+Section: 1
